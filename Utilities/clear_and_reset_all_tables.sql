@@ -1,3 +1,5 @@
+SET search_path TO public;
+
 DO $$ DECLARE
 r RECORD;
 BEGIN
@@ -13,3 +15,5 @@ BEGIN
     EXECUTE 'ALTER SEQUENCE ' || quote_ident(r.sequence_name) || ' RESTART';
   END LOOP;
 END $$;
+
+SELECT current_schema();
