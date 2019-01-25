@@ -11,5 +11,5 @@ JOIN information_schema.key_column_usage AS key_column
 WHERE
   constraint_type = 'FOREIGN KEY'
   AND
-  table_constraints.table_name = 'account'
+  table_constraints.table_name = 'user'
 ;

@@ -1,4 +1,5 @@
 SELECT
+  CONCAT('fk_', constraint_column_usage.table_name, '_', table_constraints.table_name) AS expected,
   table_constraints.constraint_name,
   table_constraints.table_name,
   key_column.column_name,
@@ -11,4 +12,7 @@ JOIN information_schema.constraint_column_usage AS constraint_column_usage
   ON constraint_column_usage.constraint_name = table_constraints.constraint_name
 WHERE
   constraint_type = 'FOREIGN KEY'
+  AND
+  CONCAT('fk_', constraint_column_usage.table_name, '_', table_constraints.table_name) != table_constraints.constraint_name
+ORDER BY constraint_name ASC
 ;
